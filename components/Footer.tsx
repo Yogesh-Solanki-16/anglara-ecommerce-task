@@ -8,7 +8,7 @@ export default function Footer() {
   const [email, setEmail] = useState("");
 
   const handleSubscribe = () => {
-    console.log("Subscribe:", email);
+    // console.log("Subscribe:", email);
     setEmail("");
   };
 
@@ -31,7 +31,11 @@ export default function Footer() {
               />
             </div>
 
-            <button className="w-full bg-white text-black rounded-full py-3 text-sm font-medium hover:bg-gray-100 transition">
+            <button
+              onClick={handleSubscribe}
+              value={email}
+              className="w-full bg-white text-black rounded-full py-3 text-sm font-medium hover:bg-gray-100 transition cursor-pointer"
+            >
               Subscribe to Newsletter
             </button>
           </div>
@@ -42,12 +46,12 @@ export default function Footer() {
       <div className="bg-[#F0F0F0] pt-6 sm:pt-8">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-16">
           {/* Footer Links */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12 pb-12 lg:pb-[50px]">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12 pb-12 lg:pb-[50px] mt-14 sm:mt-0">
             {/* Brand Column */}
             <div className="col-span-2 md:col-span-3 lg:col-span-1">
               <Link
                 href="/"
-                className="text-[24px] sm:text-[28px] lg:text-[32px] font-black tracking-tight inline-block mb- "
+                className="text-[24px] sm:text-[28px] lg:text-[32px] font-black tracking-tight inline-block mb-4 sm:mb-6"
               >
                 SHOP.CO
               </Link>

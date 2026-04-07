@@ -17,7 +17,7 @@ export default function CartView() {
   const total = subtotal - discountAmount + deliveryFee;
 
   const handleApplyPromo = () => {
-    console.log("Apply promo:", promoCode);
+    // console.log("Apply promo:", promoCode);
   };
 
   if (items.length === 0) {

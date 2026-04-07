@@ -7,13 +7,13 @@ export default function Hero() {
       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center">
         {/* LEFT */}
         <div className="w-full lg:w-1/2 px-5 sm:px-6 lg:pl-[100px] py-12 lg:py-[100px] text-center lg:text-left">
-          <h1 className="text-[32px] sm:text-[44px] lg:text-[64px] font-extrabold leading-[1.1] tracking-tight mb-5 max-w-[580px] mx-auto lg:mx-0">
+          <h1 className="text-[40px] sm:text-[44px] lg:text-[64px] font-extrabold leading-[1.1] tracking-tight mb-5 text-left mx-auto lg:mx-0 ">
             FIND CLOTHES <br />
             THAT MATCHES <br />
             YOUR STYLE
           </h1>
 
-          <p className="text-black/60 text-[14px] sm:text-[15px] leading-[22px] mb-6 max-w-[520px] mx-auto lg:mx-0">
+          <p className="text-black/60 text-[12px] sm:text-base leading-[22px] mb-6 text-left mx-auto lg:mx-0">
             Browse through our diverse range of meticulously crafted garments,
             designed to bring out your individuality and cater to your sense of
             style.
@@ -21,7 +21,7 @@ export default function Hero() {
 
           <Link
             href="#"
-            className="inline-block w-full sm:w-auto bg-black text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition"
+            className="inline-block w-full sm:w-auto bg-black text-white px-12 py-3.5 rounded-full text-base font-medium hover:bg-gray-800 transition"
           >
             Shop Now
           </Link>
