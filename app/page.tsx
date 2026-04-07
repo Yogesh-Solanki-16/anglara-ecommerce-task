@@ -21,7 +21,7 @@ export default function HomePage() {
         const data = await getProducts();
         setProducts(data);
       } catch (error) {
-        console.error("Error loading products:", error);
+        // console.error("Error loading products:", error);
       } finally {
         setLoading(false);
       }

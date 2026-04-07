@@ -8,7 +8,7 @@ import Footer from "@/components/layout/Footer";
 const inter = Inter({ subsets: ["latin"], preload: false });
 
 export const metadata: Metadata = {
-  title: "SHOP.CO — Find Clothes That Match Your Style",
+  title: "SHOP.CO",
   description: "Browse our diverse range of meticulously crafted garments.",
 };
 
@@ -19,7 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-white text-black antialiased`} suppressHydrationWarning>
+      <body
+        className={`${inter.className} bg-white text-black antialiased`}
+        suppressHydrationWarning
+      >
         <AnnouncementBar />
         <Navbar />
         <main>{children}</main>

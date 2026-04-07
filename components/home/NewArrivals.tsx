@@ -10,7 +10,6 @@ export default function NewArrivals({ products }: NewArrivalsProps) {
   // Show exactly 4 products
   const displayed = products.slice(0, 4);
 
-  // Assign fake original prices to show discount on 2nd and 4th items
   const getOriginalPrice = (index: number, price: number) => {
     if (index === 1 || index === 3) {
       return Math.round(price * 1.3);
@@ -25,7 +24,6 @@ export default function NewArrivals({ products }: NewArrivalsProps) {
           NEW ARRIVALS
         </h2>
 
-        {/* Responsive grid: 2 cols mobile, 3 cols tablet, 4 cols desktop */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
           {displayed.map((product, index) => (
             <ProductCard
@@ -39,7 +37,7 @@ export default function NewArrivals({ products }: NewArrivalsProps) {
         <div className="flex justify-center mt-6 sm:mt-8 lg:mt-[36px]">
           <Link
             href="#"
-            className="border border-black/10 text-sm sm:text-base font-medium px-12 sm:px-[54px] py-3 sm:py-4 rounded-full hover:bg-gray-50 transition-colors"
+            className="w-full sm:w-auto border border-black/10 text-sm sm:text-base font-medium px-12 sm:px-[54px] py-3 sm:py-4 rounded-full hover:bg-gray-50 transition-colors text-center"
           >
             View All
           </Link>

@@ -7,10 +7,8 @@ interface TopSellingProps {
 }
 
 export default function TopSelling({ products }: TopSellingProps) {
-  // Show exactly 4 products
   const displayed = products.slice(0, 4);
 
-  // Assign fake original prices to show discount on 1st item only
   const getOriginalPrice = (index: number, price: number) => {
     if (index === 0) {
       return Math.round(price * 1.1);
@@ -39,7 +37,7 @@ export default function TopSelling({ products }: TopSellingProps) {
         <div className="flex justify-center mt-6 sm:mt-8 lg:mt-[36px]">
           <Link
             href="#"
-            className="border border-black/10 text-sm sm:text-base font-medium px-12 sm:px-[54px] py-3 sm:py-4 rounded-full hover:bg-gray-50 transition-colors"
+            className="w-full sm:w-auto border border-black/10 text-sm sm:text-base font-medium px-12 sm:px-[54px] py-3 sm:py-4 rounded-full hover:bg-gray-50 transition-colors text-center"
           >
             View All
           </Link>

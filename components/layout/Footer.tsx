@@ -271,9 +271,9 @@ export default function Footer() {
               <Image
                 src="/payment.png"
                 alt="Payment methods"
-                width={240}
+                width={281}
                 height={30}
-                className="h-auto w-auto max-w-[340px] object-contain"
+                className="h-auto w-full sm:w-auto max-w-full sm:max-w-[281px] object-contain"
               />
             </div>
           </div>

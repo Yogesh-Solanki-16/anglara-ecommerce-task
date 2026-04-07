@@ -33,14 +33,14 @@ export default function Hero() {
               <p className="text-xs text-black/60">International Brands</p>
             </div>
 
-            <div className="hidden sm:block w-[1px] h-[40px] bg-black/10"></div>
+            <div className="hidden sm:block w-px h-[40px] bg-black/10"></div>
 
             <div>
               <h3 className="text-[26px] sm:text-[28px] font-bold">2,000+</h3>
               <p className="text-xs text-black/60">High-Quality Products</p>
             </div>
 
-            <div className="hidden sm:block w-[1px] h-[40px] bg-black/10"></div>
+            <div className="hidden sm:block w-px h-[40px] bg-black/10"></div>
 
             <div>
               <h3 className="text-[26px] sm:text-[28px] font-bold">30,000+</h3>

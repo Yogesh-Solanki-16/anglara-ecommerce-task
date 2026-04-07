@@ -10,7 +10,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const totalItems = useCartStore((s) => s.totalItems());
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
@@ -22,7 +21,6 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
-  // Detect scroll for navbar styling
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -31,7 +29,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu on ESC key
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape" && menuOpen) {
@@ -50,7 +47,6 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-16 flex items-center justify-between h-[60px] sm:h-[70px] lg:h-[72px]">
-          {/* Mobile: Hamburger on left */}
           <button
             className="lg:hidden mr-3 relative z-20"
             onClick={() => setMenuOpen(true)}
@@ -119,10 +115,9 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Full Screen Mobile Menu with Slide Animation */}
       <div
         className={`
-          fixed inset-0 z-[100] lg:hidden
+          fixed inset-0 z-100 lg:hidden
           transition-all duration-300 ease-in-out
           ${menuOpen ? "visible" : "invisible delay-300"}
         `}
@@ -193,7 +188,6 @@ export default function Navbar() {
             </div>
 
             {/* Search Section */}
-       
 
             {/* Additional Links */}
             <div className="mt-8 px-4 pt-4 border-t border-gray-100">

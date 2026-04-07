@@ -7,7 +7,6 @@ interface DressStyleProps {
 }
 
 export default function DressStyle({ products }: DressStyleProps) {
-  // Map products to dress styles
   const styles = [
     { name: "Casual", image: products[0]?.image || "" },
     { name: "Formal", image: products[1]?.image || "" },
@@ -22,13 +21,13 @@ export default function DressStyle({ products }: DressStyleProps) {
           <h2 className="text-[32px] sm:text-[40px] lg:text-[48px] font-black text-center mb-10 sm:mb-14 lg:mb-[64px] tracking-tight">
             BROWSE BY DRESS STYLE
           </h2>
-          
+
           {/* Grid Layout */}
           <div className="space-y-4 sm:space-y-5">
             {/* First Row: Casual (40%) + Formal (60%) */}
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-5">
               {/* Casual */}
-              <Link 
+              <Link
                 href="#"
                 className="relative bg-white rounded-[20px] overflow-hidden h-[190px] sm:h-[240px] lg:h-[289px] lg:col-span-2 group hover:shadow-lg transition-shadow"
               >
@@ -47,7 +46,7 @@ export default function DressStyle({ products }: DressStyleProps) {
               </Link>
 
               {/* Formal */}
-              <Link 
+              <Link
                 href="#"
                 className="relative bg-white rounded-[20px] overflow-hidden h-[190px] sm:h-[240px] lg:h-[289px] lg:col-span-3 group hover:shadow-lg transition-shadow"
               >
@@ -66,10 +65,9 @@ export default function DressStyle({ products }: DressStyleProps) {
               </Link>
             </div>
 
-            {/* Second Row: Party (60%) + Gym (40%) */}
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-5">
               {/* Party */}
-              <Link 
+              <Link
                 href="#"
                 className="relative bg-white rounded-[20px] overflow-hidden h-[190px] sm:h-[240px] lg:h-[289px] lg:col-span-3 group hover:shadow-lg transition-shadow"
               >
@@ -88,7 +86,7 @@ export default function DressStyle({ products }: DressStyleProps) {
               </Link>
 
               {/* Gym */}
-              <Link 
+              <Link
                 href="#"
                 className="relative bg-white rounded-[20px] overflow-hidden h-[190px] sm:h-[240px] lg:h-[289px] lg:col-span-2 group hover:shadow-lg transition-shadow"
               >

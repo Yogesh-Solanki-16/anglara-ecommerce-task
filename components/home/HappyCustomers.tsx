@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MoveLeft, MoveRight } from "lucide-react";
 
 const reviews = [
@@ -8,43 +8,59 @@ const reviews = [
     name: "Sarah M.",
     verified: true,
     rating: 5,
-    review: "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations."
+    review:
+      "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.",
   },
   {
     id: 2,
     name: "Alex K.",
     verified: true,
     rating: 5,
-    review: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions."
+    review:
+      "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.",
   },
   {
     id: 3,
     name: "James L.",
     verified: true,
     rating: 5,
-    review: "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends."
+    review:
+      "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.",
   },
   {
     id: 4,
     name: "Mooen",
     verified: true,
     rating: 5,
-    review: "The quality of the products is outstanding. I've been shopping here for months and every purchase has been worth it. Highly recommend to anyone looking for stylish clothing!"
+    review:
+      "The quality of the products is outstanding. I've been shopping here for months and every purchase has been worth it. Highly recommend to anyone looking for stylish clothing!",
   },
   {
     id: 5,
     name: "Emily R.",
     verified: true,
     rating: 5,
-    review: "Shop.co has become my go-to for all my fashion needs. The customer service is excellent and the delivery is always on time. Love the variety and quality!"
+    review:
+      "Shop.co has become my go-to for all my fashion needs. The customer service is excellent and the delivery is always on time. Love the variety and quality!",
   },
 ];
 
 export default function HappyCustomers() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  
-  // Show 3 reviews at a time on desktop, 1 on mobile
-  const reviewsPerPage = typeof window !== 'undefined' && window.innerWidth >= 1024 ? 3 : 1;
+  const [reviewsPerPage, setReviewsPerPage] = useState(1);
+
+  useEffect(() => {
+    // Set initial value based on window width
+    const updateReviewsPerPage = () => {
+      setReviewsPerPage(window.innerWidth >= 1024 ? 3 : 1);
+    };
+
+    updateReviewsPerPage();
+    window.addEventListener("resize", updateReviewsPerPage);
+
+    return () => window.removeEventListener("resize", updateReviewsPerPage);
+  }, []);
+
   const maxIndex = Math.max(0, reviews.length - reviewsPerPage);
 
   const handlePrev = () => {
@@ -63,7 +79,7 @@ export default function HappyCustomers() {
           <h2 className="text-[32px] sm:text-[40px] lg:text-[48px] font-black tracking-tight">
             OUR HAPPY CUSTOMERS
           </h2>
-          
+
           {/* Navigation Arrows */}
           <div className="flex items-center gap-4 sm:gap-5">
             <button
@@ -87,14 +103,16 @@ export default function HappyCustomers() {
 
         {/* Reviews Carousel */}
         <div className="overflow-hidden">
-          <div 
+          <div
             className="flex transition-transform duration-500 ease-in-out gap-5"
-            style={{ transform: `translateX(-${currentIndex * (100 / reviewsPerPage + 1.5)}%)` }}
+            style={{
+              transform: `translateX(-${currentIndex * (100 / reviewsPerPage + 1.5)}%)`,
+            }}
           >
             {reviews.map((review) => (
               <div
                 key={review.id}
-                className="flex-shrink-0 w-full lg:w-[calc(33.333%-14px)] bg-white border border-black/10 rounded-[20px] p-6 sm:p-7 lg:p-8"
+                className="shrink-0 w-full lg:w-[calc(33.333%-14px)] bg-white border border-black/10 rounded-[20px] p-6 sm:p-7 lg:p-8"
               >
                 {/* Stars */}
                 <div className="flex items-center gap-1 mb-4">
@@ -112,10 +130,20 @@ export default function HappyCustomers() {
 
                 {/* Name with verification */}
                 <div className="flex items-center gap-1 mb-3">
-                  <h3 className="font-bold text-base sm:text-lg lg:text-xl">{review.name}</h3>
+                  <h3 className="font-bold text-base sm:text-lg lg:text-xl">
+                    {review.name}
+                  </h3>
                   {review.verified && (
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    <svg
+                      className="w-5 h-5 sm:w-6 sm:h-6 text-green-500"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                   )}
                 </div>
