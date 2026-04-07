@@ -23,7 +23,8 @@ export default function BrandBar() {
                 alt={brand.name}
                 width={166}
                 height={33}
-                className="h-full w-auto object-contain brightness-0 invert"
+                className="h-full object-contain brightness-0 invert"
+                style={{ width: 'auto', height: 'auto' }}
               />
             </div>
           ))}

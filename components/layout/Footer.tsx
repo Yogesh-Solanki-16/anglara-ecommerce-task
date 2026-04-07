@@ -2,10 +2,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSubscribe = () => {
     // console.log("Subscribe:", email);
@@ -22,14 +27,25 @@ export default function Footer() {
           </h2>
 
           <div className="w-full lg:w-[350px] flex flex-col gap-3">
-            <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black/40" />
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="w-full bg-white rounded-full pl-12 pr-4 py-3 text-sm outline-none"
-              />
-            </div>
+            {mounted ? (
+              <div className="relative">
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black/40" />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  className="w-full bg-white rounded-full pl-12 pr-4 py-3 text-sm outline-none"
+                />
+              </div>
+            ) : (
+              <div className="relative">
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black/40" />
+                <div className="w-full bg-white rounded-full pl-12 pr-4 py-3 text-sm text-gray-400">
+                  Enter your email address
+                </div>
+              </div>
+            )}
 
             <button
               onClick={handleSubscribe}

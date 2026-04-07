@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Product } from "@/types";
 import { useCartStore } from "@/store/cartStore";
-import StarRating from "./StarRating";
+import StarRating from "@/components/shared/StarRating";
 
 interface ProductCardProps {
   product: Product;
