@@ -1,6 +1,6 @@
 export async function getProducts() {
   try {
-    const res = await fetch(`${process.env.API_BASE_URL}/products`, {
+    const res = await fetch("https://fakestoreapi.com/products", {
       next: { revalidate: 3600 },
     });
 
