@@ -30,6 +30,7 @@ export default function NewArrivals({ products }: NewArrivalsProps) {
               key={product.id}
               product={product}
               originalPrice={getOriginalPrice(index, product.price)}
+              priority={index < 2}
             />
           ))}
         </div>

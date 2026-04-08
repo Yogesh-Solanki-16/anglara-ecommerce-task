@@ -7,9 +7,10 @@ import StarRating from "@/components/shared/StarRating";
 interface ProductCardProps {
   product: Product;
   originalPrice?: number;
+  priority?: boolean;
 }
 
-export default function ProductCard({ product, originalPrice }: ProductCardProps) {
+export default function ProductCard({ product, originalPrice, priority = false }: ProductCardProps) {
   const addItem = useCartStore((s) => s.addItem);
   const discount = originalPrice
     ? Math.round(((originalPrice - product.price) / originalPrice) * 100)
@@ -25,6 +26,7 @@ export default function ProductCard({ product, originalPrice }: ProductCardProps
           fill
           className="object-contain p-3 sm:p-4 lg:p-6 group-hover:scale-105 transition-transform duration-300"
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          priority={priority}
         />
       </div>
       

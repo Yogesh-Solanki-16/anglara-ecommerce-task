@@ -8,7 +8,12 @@ import { ShoppingCart, User, Menu, X, Search, ChevronDown } from "lucide-react";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const totalItems = useCartStore((s) => s.totalItems());
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (menuOpen) {
@@ -102,7 +107,7 @@ export default function Navbar() {
               className="relative hover:opacity-70 transition-opacity"
             >
               <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" />
-              {totalItems > 0 && (
+              {mounted && totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] rounded-full w-[18px] h-[18px] flex items-center justify-center font-medium">
                   {totalItems}
                 </span>
@@ -193,7 +198,7 @@ export default function Navbar() {
             <div className="mt-8 px-4 pt-4 border-t border-gray-100">
               <div className="space-y-3">
                 <Link
-                  href="/account"
+                  href="/"
                   onClick={() => setMenuOpen(false)}
                   className="flex items-center gap-3 py-2 text-sm text-gray-600 hover:text-black transition-colors"
                 >
@@ -207,7 +212,7 @@ export default function Navbar() {
                 >
                   <ShoppingCart className="w-5 h-5" />
                   <span>My Cart</span>
-                  {totalItems > 0 && (
+                  {mounted && totalItems > 0 && (
                     <span className="ml-auto bg-black text-white text-[10px] rounded-full w-[18px] h-[18px] flex items-center justify-center font-medium">
                       {totalItems}
                     </span>
