@@ -31,9 +31,9 @@ export default function HomePage() {
   }, []);
 
   // Split products for different sections
-  const newArrivals = products.slice(0, 4);
-  const topSelling = products.slice(4, 8);
-  const dressStyles = products.slice(16, 20);
+  const newArrivals = products.slice(10, 14);
+  const topSelling = products.slice(5, 9);
+  const dressStyles = products.slice(88, 92);
 
   return (
     <>

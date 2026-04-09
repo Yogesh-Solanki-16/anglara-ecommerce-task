@@ -1,10 +1,10 @@
 import { Product } from "@/types";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_DUMMY_URL;
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    const res = await fetch(`${API_BASE_URL}/products`, {
+    const res = await fetch(`${API_BASE_URL}/products?limit=100`, {
       headers: {
         Accept: "application/json",
       },
@@ -12,42 +12,34 @@ export async function getProducts(): Promise<Product[]> {
     });
 
     if (!res.ok) {
-      // console.error(`HTTP error! status: ${res.status}`);
+      console.error(`HTTP error! status: ${res.status}`);
       return [];
     }
 
     const data = await res.json();
 
-    if (!Array.isArray(data)) {
-      // console.error("Invalid response format - expected array");
+    // ✅ handle both APIs
+    let products: Product[] = [];
+    
+    if (Array.isArray(data)) {
+      products = data;
+    } else if (Array.isArray(data.products)) {
+      products = data.products;
+    } else {
+      console.error("Invalid response format");
       return [];
     }
 
-    return data as Product[];
+    // Normalize the data structure
+    return products.map(product => ({
+      ...product,
+      image: product.image || (product.images && product.images[0]) || '',
+      rating: typeof product.rating === 'number' 
+        ? { rate: product.rating, count: 0 }
+        : product.rating || { rate: 0, count: 0 }
+    }));
   } catch (error) {
-    // console.error("Error fetching products:", error);
+    console.error("Error fetching products:", error);
     return [];
-  }
-}
-
-export async function getProductById(id: number): Promise<Product | null> {
-  try {
-    const res = await fetch(`${API_BASE_URL}/products/${id}`, {
-      headers: {
-        Accept: "application/json",
-      },
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      // console.error(`HTTP error! status: ${res.status}`);
-      return null;
-    }
-
-    const data = await res.json();
-    return data as Product;
-  } catch (error) {
-    // console.error(`Error fetching product ${id}:`, error);
-    return null;
   }
 }

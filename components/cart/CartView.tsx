@@ -59,13 +59,15 @@ export default function CartView() {
               >
                 {/* Product Image */}
                 <div className="relative w-[100px] h-[100px] sm:w-[124px] sm:h-[124px] bg-[#F0EEED] rounded-[8px] sm:rounded-[9px] shrink-0">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-contain p-2 sm:p-3"
-                    sizes="124px"
-                  />
+                  {item.image && (
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-contain p-2 sm:p-3"
+                      sizes="124px"
+                    />
+                  )}
                 </div>
 
                 {/* Product Details */}
@@ -161,14 +163,14 @@ export default function CartView() {
               </div>
               <button
                 onClick={handleApplyPromo}
-                className="bg-black text-white px-6 sm:px-8 py-3 rounded-full font-medium text-sm sm:text-base hover:bg-gray-800 transition-colors"
+                className="bg-black text-white px-6 sm:px-8 py-3 rounded-full font-medium text-sm sm:text-base hover:bg-gray-800 transition-colors cursor-pointer"
               >
                 Apply
               </button>
             </div>
 
             {/* Checkout Button */}
-            <button className="w-full bg-black text-white py-4 rounded-full font-medium text-sm sm:text-base hover:bg-gray-800 transition-colors flex items-center justify-center gap-3">
+            <button className="w-full bg-black text-white py-4 rounded-full font-medium text-sm sm:text-base hover:bg-gray-800 transition-colors flex items-center justify-center gap-3 cursor-pointer">
               Go to Checkout
               <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>

@@ -22,7 +22,7 @@ export const useCartStore = create<CartStore>()(
         if (existing) {
           set({
             items: get().items.map((i) =>
-              i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i
+              i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i,
             ),
           });
         } else {
@@ -39,9 +39,7 @@ export const useCartStore = create<CartStore>()(
           return;
         }
         set({
-          items: get().items.map((i) =>
-            i.id === id ? { ...i, quantity } : i
-          ),
+          items: get().items.map((i) => (i.id === id ? { ...i, quantity } : i)),
         });
       },
 
@@ -52,6 +50,6 @@ export const useCartStore = create<CartStore>()(
       totalPrice: () =>
         get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
     }),
-    { name: "shop-co-cart" }
-  )
+    { name: "shop-co-cart" },
+  ),
 );

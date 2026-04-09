@@ -3,9 +3,10 @@ interface StarRatingProps {
   count?: number;
 }
 
-export default function StarRating({ rating, count }: StarRatingProps) {
-  const fullStars = Math.floor(rating);
-  const hasHalfStar = rating % 1 >= 0.5;
+export default function StarRating({ rating = 0, count }: StarRatingProps) {
+  const safeRating = rating || 0;
+  const fullStars = Math.floor(safeRating);
+  const hasHalfStar = safeRating % 1 >= 0.5;
 
   return (
     <div className="flex items-center gap-[5px]">
@@ -59,7 +60,7 @@ export default function StarRating({ rating, count }: StarRatingProps) {
         })}
       </div>
       <span className="text-xs md:text-sm text-black ml-[8px]">
-        {rating.toFixed(1)}<span className="text-black/60">/5</span>
+        {safeRating.toFixed(1)}<span className="text-black/60">/5</span>
       </span>
     </div>
   );
